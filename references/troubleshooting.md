@@ -10,11 +10,15 @@ Report the failing layer, not only the final error:
 - Model response: invalid JSON, missing required Tip fields, or unusable image IDs.
 - Export: output directory issue, `.docx` write failure, or invalid generated file.
 
-## Current Model Limitation
+## Model Configuration
 
-The bundled CLI imports `generateTipsWithDeepSeek` and reads DeepSeek-specific environment variables. A user saying "use the current chat model" is not enough for CLI execution because the CLI cannot automatically call the chat session model.
+The CLI supports two modes:
 
-If provider-neutral support exists in a later bundled code version, inspect `assets/md-cli/src` before using `MD_TIP_PROVIDER`, `MD_TIP_API_KEY`, `MD_TIP_BASE_URL`, or `MD_TIP_MODEL`.
+1. **JSON Import Mode** (recommended): Use `--tips-json` or `--tips-dir` to pass pre-generated tips. No API key needed. The chat model generates tips, then the CLI handles Word export.
+
+2. **DeepSeek Mode** (legacy): Set `DEEPSEEK_API_KEY` environment variable. The CLI calls DeepSeek directly to generate tips.
+
+If the user says "use the current chat model", use JSON import mode: generate tips in the chat session, save to JSON, then call the CLI with `--tips-json`.
 
 ## Verification
 

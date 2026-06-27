@@ -51,6 +51,15 @@ The Word document is expected to include:
 - Tags and difficulty.
 - Resolved images when available.
 
+## JSON Import Input
+
+In JSON import mode, the CLI accepts tips via:
+
+- `--tips-json <file>`: A single JSON file containing `KnowledgeTip[]` or `{ tips: KnowledgeTip[] }`.
+- `--tips-dir <dir>`: A directory where each `foo.md` maps to `foo.tips.json` or `foo.json`.
+
+The tips JSON must match the KnowledgeTip schema. See `SKILL.md` for the full schema definition.
+
 ## Example User Requests
 
 ```text
@@ -62,5 +71,5 @@ Use md-tip-generator to turn ./markdowns into ./outputs/knowledge-tips.docx.
 ```
 
 ```text
-用 md-tip-generator 处理 ./markdowns/article.md，模型用 deepseek-chat，输出到 ./outputs/article-tips.docx。
+用 md-tip-generator 处理 ./markdowns/article.md，用 --tips-json 导入已生成的 tips，输出到 ./outputs/article-tips.docx。
 ```
