@@ -1,0 +1,4 @@
+interface:
+  display_name: "MD Tip Generator"
+  short_description: "Self-contained Markdown to Tip Word workflow"
+  default_prompt: "Use $md-tip-generator to convert Markdown articles into a knowledge Tip Word document."
