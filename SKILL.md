@@ -55,7 +55,7 @@ When generating tips in chat, output valid JSON matching this structure:
 {
   "tips": [
     {
-      "title": "不超过18字",
+      "title": "不超过20字，必须包含主体（文章主题/章节名），如'Pinia 的配置方法'而非'配置方法'",
       "oneSentence": "40-90个中文字符",
       "explanation": "60-180个中文字符",
       "sourceQuote": "原文依据，必须来自原文",
@@ -81,8 +81,9 @@ When generating tips in chat, output valid JSON matching this structure:
 
 - 同一篇文章内不要生成重复知识点；如果两个知识点讲的是同一件事，只保留更具体、更有原文依据的一个。
 - 每个 Tip 只讲一个具体知识点。
+- **每个 Tip 的标题必须结合主体（文章标题或章节主题）**，不能是脱离上下文的独立陈述。标题应让读者一眼看出这个知识点来自哪个领域/主题/场景。例如不要写"配置方法"，而应写"Pinia 的配置方法"，其中"Pinia"就是主体。
 - 每个 Tip 必须有 sourceQuote，且 sourceQuote 必须来自原文。
-- 不要输出文章摘要、标题复述、空泛建议。
+- 不要输出文章摘要、标题复述、空泛建议，也不要输出没有主体的泛化标题。
 - 如果图片和 Tip 有关，返回 imageIds，例如 `["img_1"]`；不确定就返回 `[]`。
 - 状态规则：finalScore >= 85 为精品；finalScore < 60 为驳回；其他为审核。
 
